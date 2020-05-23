@@ -8,89 +8,54 @@ const resultContent = document.getElementById('resultContent');
 const resultOutput = document.getElementById('resultOutput');
 
 // Event listeners
-document.addEventListener('click', () => {
-	result.style.display = 'none';
-});
+document.addEventListener('click', () => result.style.display = 'none');
 form.addEventListener('submit', e => {
-	// Hide error message
-	error.style.display = 'none';
-	// Hide results
-	resultContent.style.display = 'none';
-	// show results
-	result.style.display = 'block';
-	// Show loader
-	loader.style.display = 'block';
-	setTimeout(() => {
-		// Hide loader
-		loader.style.display = 'none';
-	}, 1000);
-	setTimeout(numToString, 2000);
-	e.preventDefault();
+  error.style.display = 'none'; // Hide error message
+  resultContent.style.display = 'none'; // Hide results
+  result.style.display = 'block'; // show results
+  loader.style.display = 'block'; // Show loader
+  setTimeout(() => loader.style.display = 'none', 1500); // Hide loader
+  setTimeout(numToString, 1500); // Call converter function
+  e.preventDefault();
 });
 
-function numToString() {
-	if (input.value === '') {
-		// Show error message
-		error.style.display = 'block';
-	} else {
-		let num;
-		if (
-			input.value % 2 === 0 &&
-			input.value % 3 === 0 &&
-			input.value % 5 === 0
-		) {
-			num = 'yu-gi-oh';
-		} else if (input.value % 2 === 0 && input.value % 3 === 0) {
-			num = 'yu-gi';
-		} else if (input.value % 2 === 0 && input.value % 5 === 0) {
-			num = 'yu-oh';
-		} else if (input.value % 3 === 0 && input.value % 5 === 0) {
-			num = 'gi-oh';
-		} else if (input.value % 2 === 0) {
-			num = 'yu';
-		} else if (input.value % 3 === 0) {
-			num = 'gi';
-		} else if (input.value % 5 === 0) {
-			num = 'oh';
-		} else {
-			num = input.value;
-		}
-		// input result into UI
-		resultOutput.innerHTML = num;
-		// show  result
-		resultContent.style.display = 'block';
-	}
-	// Clear input field
-	input.value = '';
+numToString = () => {
+  if (input.value === '') {
+    error.style.display = 'block'; // Show error message
+  } else {
+    let num;
+    if (
+      input.value % 2 === 0 &&
+      input.value % 3 === 0 &&
+      input.value % 5 === 0
+    ) {
+      num = 'yu-gi-oh';
+    } else if (input.value % 2 === 0 && input.value % 3 === 0) {
+      num = 'yu-gi';
+    } else if (input.value % 2 === 0 && input.value % 5 === 0) {
+      num = 'yu-oh';
+    } else if (input.value % 3 === 0 && input.value % 5 === 0) {
+      num = 'gi-oh';
+    } else if (input.value % 2 === 0) {
+      num = 'yu';
+    } else if (input.value % 3 === 0) {
+      num = 'gi';
+    } else if (input.value % 5 === 0) {
+      num = 'oh';
+    } else {
+      num = input.value;
+    }
+    resultOutput.innerHTML = num; // input result into UI
+    resultContent.style.display = 'block'; // show  result
+  }
+  input.value = ''; // Clear input field
 }
 
 // function numToString(e) {
-//   e.preventDefault();
-//   let list = [];
-//   let num;
-
+//   e.preventDefault(); let list = []; let num;
 //   for (let i = 0; i <= input.value; i++) {
-//     if (i % 2 === 0) {
-//       num = "yu";
-//     } else if (i % 3 === 0) {
-//       num = "gi";
-//     } else if (i % 5 === 0) {
-//       num = "oh";
-//     } else if (i % 2 === 0 && i % 3 === 0) {
-//       num = "yu-gi";
-//     } else if (i % 2 === 0 && i % 5 === 0) {
-//       num = "yu-oh";
-//     } else if (i % 3 === 0 && i % 5 === 0) {
-//       num = "gi-oh";
-//     } else if (i % 2 === 0 && i % 3 === 0 && i % 5 === 0) {
-//       num = "yu-gi-oh";
-//     } else {
-//       num = i;
-//     }
-//     list.push(num);
-//   }
-//   console.log(list);
-//   return list;
-// }
-// numToString(100);
-// numToString(22);
+//     if (i % 2 === 0) { num = "yu"; } else if (i % 3 === 0) { num = "gi";} else if (i % 5 === 0) { num = "oh"; } 
+//     else if (i % 2 === 0 && i % 3 === 0) { num = "yu-gi"; } else if (i % 2 === 0 && i % 5 === 0) { num = "yu-oh";} 
+//     else if (i % 3 === 0 && i % 5 === 0) { num = "gi-oh"; } 
+//     else if (i % 2 === 0 && i % 3 === 0 && i % 5 === 0) { num = "yu-gi-oh"; } else { num = i; } list.push(num); }
+//   console.log(list); return list; } numToString(100); numToString(22);
