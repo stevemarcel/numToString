@@ -1,0 +1,29 @@
+html,
+body {
+  text-shadow: 1px 1px 2px #444;
+}
+
+#result,
+#loader,
+#resultContent,
+#error {
+  display: none;
+}
+
+.red {
+  background: rgb(252, 153, 153);
+}
+
+.fade-in {
+  animation: fade 1s ease-in-out;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
